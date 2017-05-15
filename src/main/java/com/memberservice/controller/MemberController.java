@@ -30,8 +30,8 @@ public class MemberController {
 	 * Find member by id
 	 */
 	@GetMapping("/{memberId}")
-	public Member findMember() {
-		return new Member();
+	public Member findMember(@PathVariable Long memberId) {
+		return memberService.findMemberById(memberId);
 	}
 
 	/**
@@ -46,8 +46,10 @@ public class MemberController {
 	/**
 	 * Delete selected member
 	 */
+	@DeleteMapping("/{memberId}")
 	public ResponseEntity<?> deleteMember(@PathVariable Long memberId) {
-		return ResponseEntity.ok(memberService.deleteMember(memberId));
+		memberService.deleteMember(memberId);
+		return ResponseEntity.ok("");
 	}
 
 	/**

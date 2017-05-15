@@ -1,5 +1,7 @@
 package com.memberservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +11,8 @@ import java.util.Date;
 /**
  * Created by szagoret
  */
-@Entity public class Member {
+@Entity
+public class Member {
 
 	@Id @GeneratedValue
 	private Long id;

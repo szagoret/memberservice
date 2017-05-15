@@ -17,7 +17,7 @@ public interface MemberService {
 
 	Member createMember(Member member);
 
-	Long deleteMember(Long id);
+	void deleteMember(Long id);
 
 	Member updateMember(Map<String, String> updates, @PathVariable Long memberId);
 

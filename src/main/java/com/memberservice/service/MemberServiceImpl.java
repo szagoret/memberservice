@@ -5,13 +5,11 @@ import com.memberservice.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.Date;
 import java.util.Map;
 
 /**
- * Created by szagoret on 15.05.2017.
+ * Created by szagoret
  */
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -20,34 +18,22 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public Collection<Member> findAllMembers() {
-		Member memberSergiu = new Member();
-		memberSergiu.setId(12L);
-		memberSergiu.setBirthday(new Date());
-		memberSergiu.setFirstName("Sergiu");
-		memberSergiu.setLastName("Zagoret");
-		memberSergiu.setZipCode(123456);
-		Member memberDumitru = new Member();
-		memberDumitru.setId(1L);
-		memberDumitru.setBirthday(new Date());
-		memberDumitru.setFirstName("Dumitru");
-		memberDumitru.setLastName("Galit");
-		memberDumitru.setZipCode(993456);
-		return Arrays.asList(memberSergiu, memberDumitru);
+		return memberRepository.findAll();
 	}
 
 	@Override
 	public Member findMemberById(Long id) {
-		return new Member();
+		return memberRepository.findById(id).get();
 	}
 
 	@Override
 	public Member createMember(Member member) {
-		return new Member();
+		return memberRepository.save(member);
 	}
 
 	@Override
-	public Long deleteMember(Long id) {
-		return 1L;
+	public void deleteMember(Long id) {
+		memberRepository.delete(id);
 	}
 
 	@Override
