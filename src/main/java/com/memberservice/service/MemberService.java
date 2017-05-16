@@ -1,7 +1,6 @@
 package com.memberservice.service;
 
 import com.memberservice.entity.Member;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Collection;
 import java.util.Map;
@@ -19,6 +18,6 @@ public interface MemberService {
 
 	void deleteMember(Long id);
 
-	Member updateMember(Map<String, String> updates, @PathVariable Long memberId);
+	Member updateMember(Map<String, String> updates, Long memberId);
 
 }

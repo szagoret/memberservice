@@ -23,12 +23,12 @@ public class MemberServiceApplication {
 			memberSergiu.setBirthday(new Date());
 			memberSergiu.setFirstName("Sergiu");
 			memberSergiu.setLastName("Zagoret");
-			memberSergiu.setZipCode(123456);
+			memberSergiu.setZipCode("123456");
 			Member memberDumitru = new Member();
 			memberDumitru.setBirthday(new Date());
 			memberDumitru.setFirstName("Dumitru");
 			memberDumitru.setLastName("Galit");
-			memberDumitru.setZipCode(993456);
+			memberDumitru.setZipCode("0993456");
 			memberRepository.save(memberDumitru);
 			memberRepository.save(memberSergiu);
 		};

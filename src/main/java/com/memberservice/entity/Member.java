@@ -1,7 +1,5 @@
 package com.memberservice.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,8 +12,7 @@ import java.util.Date;
 @Entity
 public class Member {
 
-	@Id @GeneratedValue
-	private Long id;
+	@Id @GeneratedValue private Long id;
 
 	@Column(name = "first_name")
 	private String firstName;
@@ -27,7 +24,7 @@ public class Member {
 	private Date birthday;
 
 	@Column(name = "zip_code")
-	private Integer zipCode;
+	private String zipCode;
 
 	public Long getId() {
 		return id;
@@ -61,11 +58,11 @@ public class Member {
 		this.birthday = birthday;
 	}
 
-	public Integer getZipCode() {
+	public String getZipCode() {
 		return zipCode;
 	}
 
-	public void setZipCode(Integer zipCode) {
+	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 
@@ -102,6 +99,6 @@ public class Member {
 	@Override
 	public String toString() {
 		return "Member{" + "id=" + id + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\''
-				+ ", birthday=" + birthday + ", zipCode=" + zipCode + '}';
+				+ ", birthday=" + birthday + ", zipCode='" + zipCode + '\'' + '}';
 	}
 }

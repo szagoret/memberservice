@@ -35,10 +35,10 @@ public class MemberController {
 	}
 
 	/**
-	 * Create new member
+	 * Create a new member or update/overwrite existing
 	 */
 	@PostMapping
-	public Member createMember(@RequestBody Member member) {
+	public Member createOrUpdateMember(@RequestBody Member member) {
 		return memberService.createMember(member);
 
 	}
@@ -56,7 +56,7 @@ public class MemberController {
 	 * Update specific fields on selected member
 	 */
 	@PatchMapping("/{memberId}")
-	public Member updateMember(@RequestBody Map<String, String> updates, @PathVariable Long memberId) {
+	public Member partialUpdateMember(@RequestBody Map<String, String> updates, @PathVariable Long memberId) {
 		return memberService.updateMember(updates, memberId);
 	}
 
