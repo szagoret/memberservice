@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Created by szagoret
@@ -21,8 +22,7 @@ import java.util.Map;
 @Service
 public class MemberServiceImpl implements MemberService {
 
-	@Value("${spring.jackson.date-format}")
-	private String dateFormat;
+	@Value("${spring.jackson.date-format}") private String dateFormat;
 
 	@Autowired private MemberRepository memberRepository;
 
@@ -32,8 +32,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public Member findMemberById(Long id) {
-		return memberRepository.findById(id).get();
+	public Optional<Member> findMemberById(Long id) {
+		return memberRepository.findById(id);
 	}
 
 	@Override
@@ -42,8 +42,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void deleteMember(Long id) {
-		memberRepository.delete(id);
+	public int deleteMember(Long id) {
+		return memberRepository.deleteMemberById(id);
 	}
 
 	@Override

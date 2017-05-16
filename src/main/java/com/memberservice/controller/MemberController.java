@@ -1,13 +1,16 @@
 package com.memberservice.controller;
 
 import com.memberservice.entity.Member;
+import com.memberservice.exceptions.MemberNotFoundException;
 import com.memberservice.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Created by szagoret
@@ -31,15 +34,20 @@ public class MemberController {
 	 */
 	@GetMapping("/{memberId}")
 	public Member findMember(@PathVariable Long memberId) {
-		return memberService.findMemberById(memberId);
+		Optional<Member> member = memberService.findMemberById(memberId);
+		if (!member.isPresent()) {
+			throw new MemberNotFoundException(memberId);
+		}
+		return member.get();
 	}
 
 	/**
 	 * Create a new member or update/overwrite existing
 	 */
 	@PostMapping
-	public Member createOrUpdateMember(@RequestBody Member member) {
-		return memberService.createMember(member);
+	public ResponseEntity<Member> createOrUpdateMember(@RequestBody Member member) {
+		Member createdMember = memberService.createMember(member);
+		return ResponseEntity.status(HttpStatus.CREATED).body(createdMember);
 
 	}
 
@@ -48,8 +56,12 @@ public class MemberController {
 	 */
 	@DeleteMapping("/{memberId}")
 	public ResponseEntity<?> deleteMember(@PathVariable Long memberId) {
-		memberService.deleteMember(memberId);
-		return ResponseEntity.ok("");
+		int count = memberService.deleteMember(memberId);
+		if (count > 0) {
+			return ResponseEntity.ok("The member with id: " + memberId + "was deleted with success");
+		} else {
+			return ResponseEntity.noContent().build();
+		}
 	}
 
 	/**
