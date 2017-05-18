@@ -4,7 +4,6 @@ import com.memberservice.entity.Member;
 
 import java.util.Collection;
 import java.util.Map;
-import java.util.Optional;
 
 /**
  * Created by szagoret
@@ -13,7 +12,7 @@ public interface MemberService {
 
 	Collection<Member> findAllMembers();
 
-	Optional<Member> findMemberById(Long id);
+	Member findMemberById(Long id);
 
 	Member createMember(Member member);
 
