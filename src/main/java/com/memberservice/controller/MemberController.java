@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.Collection;
 import java.util.Map;
 
@@ -16,7 +15,7 @@ import java.util.Map;
  * Created by szagoret
  */
 @RestController
-@RequestMapping("/members")
+@RequestMapping(value = "/members")
 public class MemberController {
 
     @Autowired
