@@ -97,7 +97,7 @@ public class MemberRestControllerTest {
         mockMvc.perform(post("/members")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsBytes(new Member()))
+                .content(objectMapper.writeValueAsBytes(member))
         )
                 .andDo(print())
                 .andExpect(status().isCreated());
