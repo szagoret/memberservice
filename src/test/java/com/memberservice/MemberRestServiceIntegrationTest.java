@@ -1,4 +1,4 @@
-package com.memberservice.controller;
+package com.memberservice;
 
 import com.memberservice.entity.Member;
 import org.junit.Test;
@@ -41,7 +41,6 @@ public class MemberRestServiceIntegrationTest {
     @Test
     public void readMembers() {
         ResponseEntity<Member[]> responseEntity = restTemplate.getForEntity("/members", Member[].class);
-
         Member[] memberList = responseEntity.getBody();
     }
 

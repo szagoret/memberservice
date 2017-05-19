@@ -1,4 +1,4 @@
-package com.memberservice.controller;
+package com.memberservice.exceptions.handler;
 
 import com.memberservice.exceptions.DateFormatException;
 import com.memberservice.exceptions.MemberNotFoundException;

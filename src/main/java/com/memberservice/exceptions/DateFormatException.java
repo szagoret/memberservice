@@ -15,9 +15,4 @@ public class DateFormatException extends RuntimeException {
         super(String.format(errorTemplate, dateValue, dateFormat));
         logger.error(String.format(errorTemplate, dateValue, dateFormat));
     }
-
-    public DateFormatException(String message) {
-        super(message);
-        logger.error(message);
-    }
 }
