@@ -8,8 +8,8 @@ import org.slf4j.LoggerFactory;
  */
 public class DateFormatException extends RuntimeException {
 
-    private Logger logger = LoggerFactory.getLogger(DateFormatException.class);
     private static String errorTemplate = "Date format: %s" + " is invalid. Please use: %s";
+    private Logger logger = LoggerFactory.getLogger(DateFormatException.class);
 
     public DateFormatException(String dateValue, String dateFormat) {
         super(String.format(errorTemplate, dateValue, dateFormat));

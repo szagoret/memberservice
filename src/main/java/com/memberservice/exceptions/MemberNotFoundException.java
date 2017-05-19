@@ -8,9 +8,8 @@ import org.slf4j.LoggerFactory;
  */
 public class MemberNotFoundException extends RuntimeException {
 
-    private Logger logger = LoggerFactory.getLogger(MemberNotFoundException.class);
-
     private static String errorTemplate = "Could not find member with ID: %d";
+    private Logger logger = LoggerFactory.getLogger(MemberNotFoundException.class);
 
     public MemberNotFoundException(Long memberId) {
         super(String.format(errorTemplate, memberId));

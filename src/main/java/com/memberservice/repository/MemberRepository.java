@@ -14,11 +14,11 @@ import java.util.Optional;
  */
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
-	Optional<Member> findById(Long id);
+    Optional<Member> findById(Long id);
 
-	@Transactional
-	@Modifying
-	@Query("delete from Member m where m.id= ?1")
-	int deleteMemberById(Long id);
+    @Transactional
+    @Modifying
+    @Query("delete from Member m where m.id= ?1")
+    int deleteMemberById(Long id);
 
 }

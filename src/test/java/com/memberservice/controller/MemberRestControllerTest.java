@@ -5,6 +5,7 @@ import com.memberservice.entity.Member;
 import com.memberservice.exceptions.DateFormatException;
 import com.memberservice.exceptions.MemberNotFoundException;
 import com.memberservice.service.MemberService;
+import com.memberservice.utils.MemberTestUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +18,9 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.nio.charset.Charset;
 import java.text.ParseException;
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
@@ -34,18 +37,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class MemberRestControllerTest {
 
     private static final Long MEMBER_ID = 42L;
-    private static final String MEMBER_FIRST_NAME = "Leon";
-    private static final String MEMBER_LAST_NAME = "Kluge";
-    private static final String MEMBER_ZIP_CODE = "01317";
-    private static final Date MEMBER_BIRTHDAY;
-
-    static {
-        Calendar calendar = new GregorianCalendar();
-        calendar.set(1970, 0, 15);
-        MEMBER_BIRTHDAY = calendar.getTime();
-    }
-
-    private Member member;
 
     private MediaType jsonContentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
             MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("UTF-8"));
@@ -59,15 +50,11 @@ public class MemberRestControllerTest {
     @Autowired
     ObjectMapper objectMapper;
 
+    Member member;
+
     @Before
     public void prepareTestMember() throws ParseException {
-        member = new Member();
-        member.setId(MEMBER_ID);
-        member.setBirthday(new Date());
-        member.setFirstName(MEMBER_FIRST_NAME);
-        member.setLastName(MEMBER_LAST_NAME);
-        member.setBirthday(MEMBER_BIRTHDAY);
-        member.setZipCode(MEMBER_ZIP_CODE);
+        member = MemberTestUtils.getMember(MEMBER_ID);
     }
 
 
@@ -83,10 +70,10 @@ public class MemberRestControllerTest {
                 .andExpect(content().contentType(jsonContentType))
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].id", is(MEMBER_ID.intValue())))
-                .andExpect(jsonPath("$[0].firstName", is(MEMBER_FIRST_NAME)))
-                .andExpect(jsonPath("$[0].lastName", is(MEMBER_LAST_NAME)))
+                .andExpect(jsonPath("$[0].firstName", is("Leon")))
+                .andExpect(jsonPath("$[0].lastName", is("Kluge")))
                 .andExpect(jsonPath("$[0].birthday", is("1970-01-15")))
-                .andExpect(jsonPath("$[0].zipCode", is(MEMBER_ZIP_CODE)));
+                .andExpect(jsonPath("$[0].zipCode", is("01317")));
     }
 
 

@@ -10,14 +10,14 @@ import java.util.Map;
  */
 public interface MemberService {
 
-	Collection<Member> findAllMembers();
+    Collection<Member> findAllMembers();
 
-	Member findMemberById(Long id);
+    Member findMemberById(Long id);
 
-	Member createMember(Member member);
+    Member createMember(Member member);
 
-	int deleteMember(Long id);
+    int deleteMember(Long id);
 
-	Member updateMember(Map<String, String> updates, Long memberId);
+    Member updateMember(Map<String, String> updates, Long memberId);
 
 }
