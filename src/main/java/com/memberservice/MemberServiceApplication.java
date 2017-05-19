@@ -1,13 +1,7 @@
 package com.memberservice;
 
-import com.memberservice.entity.Member;
-import com.memberservice.repository.MemberRepository;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
-import java.util.Date;
 
 @SpringBootApplication
 public class MemberServiceApplication {
