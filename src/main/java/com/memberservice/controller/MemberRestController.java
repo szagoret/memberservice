@@ -16,7 +16,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping(value = "/members")
-public class MemberController {
+public class MemberRestController {
 
     @Autowired
     private MemberService memberService;
@@ -41,9 +41,9 @@ public class MemberController {
      * Create a new member or update/overwrite existing
      */
     @PostMapping
-    public ResponseEntity<Member> createOrUpdateMember(@RequestBody Member member, BindingResult bindingResult) {
+    public ResponseEntity<Member> createOrUpdateMember(@RequestBody Member member) {
         Member createdMember = memberService.createMember(member);
-        return ResponseEntity.status(HttpStatus.OK).body(createdMember);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdMember);
 
     }
 
