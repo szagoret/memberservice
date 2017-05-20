@@ -61,9 +61,9 @@ public class MemberServiceImpl implements MemberService {
         // get selected member or throw an error
         final Member memberToUpdate = memberRepository.findById(memberId).orElseThrow(() -> new MemberNotFoundException(memberId));
 
-        /**
-         * 1. Iterate over all fields that are annotated with @Column and exists in updates Map
-         * 2. Apply updates on selected fields
+        /*
+          1. Iterate over all fields that are annotated with @Column and exists in updates Map
+          2. Apply updates on selected fields
          */
         ReflectionUtils.doWithFields(Member.class, objField -> applyUpdates(updates, memberToUpdate, objField),
                 filterField -> filterField.isAnnotationPresent(Column.class) && updates.containsKey(filterField.getName()));
