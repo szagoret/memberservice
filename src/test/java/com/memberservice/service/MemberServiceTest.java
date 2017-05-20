@@ -27,7 +27,7 @@ import static org.mockito.BDDMockito.given;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-public class TestMemberService {
+public class MemberServiceTest {
 
     private static final Long MEMBER_ID = 42L;
     @Autowired
