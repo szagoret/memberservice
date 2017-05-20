@@ -24,16 +24,18 @@ public class MemberRestController {
      * Find all members
      */
     @GetMapping
-    public Collection<Member> findAllMembers() {
-        return memberService.findAllMembers();
+    public ResponseEntity<Collection<Member>> findAllMembers() {
+        Collection<Member> foundMembers = memberService.findAllMembers();
+        return ResponseEntity.ok(foundMembers);
     }
 
     /**
      * Find member by id
      */
     @GetMapping("/{memberId}")
-    public Member findMember(@PathVariable Long memberId) {
-        return memberService.findMemberById(memberId);
+    public ResponseEntity<Member> findMember(@PathVariable Long memberId) {
+        Member foundMember = memberService.findMemberById(memberId);
+        return ResponseEntity.ok(foundMember);
     }
 
     /**
@@ -50,7 +52,7 @@ public class MemberRestController {
      * Delete selected member
      */
     @DeleteMapping("/{memberId}")
-    public ResponseEntity<?> deleteMember(@PathVariable Long memberId) {
+    public ResponseEntity<String> deleteMember(@PathVariable Long memberId) {
         memberService.deleteMember(memberId);
         return ResponseEntity.ok("The member with id: " + memberId + " was deleted with success.");
 
@@ -60,8 +62,9 @@ public class MemberRestController {
      * Update specific fields on selected member
      */
     @PatchMapping("/{memberId}")
-    public Member partialUpdateMember(@RequestBody Map<String, String> updates, @PathVariable Long memberId) {
-        return memberService.updateMember(updates, memberId);
+    public ResponseEntity<Member> partialUpdateMember(@RequestBody Map<String, String> updates, @PathVariable Long memberId) {
+        Member updatedMember = memberService.updateMember(updates, memberId);
+        return ResponseEntity.ok(updatedMember);
     }
 
 }
