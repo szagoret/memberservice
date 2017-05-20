@@ -31,7 +31,7 @@ public class SwaggerConfig {
         ApiInfo apiInfo = new ApiInfo(
                 "Member Service REST API",
                 "RESTful Web Service with Spring/Spring Boot",
-                "0.1",
+                "0.0.1",
                 null,
                 contact,
                 null,
