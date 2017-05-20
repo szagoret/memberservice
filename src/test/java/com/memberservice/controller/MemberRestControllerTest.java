@@ -37,20 +37,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class MemberRestControllerTest {
 
     private static final Long MEMBER_ID = 42L;
-
-    private MediaType jsonContentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
-            MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("UTF-8"));
-
     @Autowired
     MockMvc mockMvc;
-
     @MockBean
     MemberService memberServiceMock;
-
     @Autowired
     ObjectMapper objectMapper;
-
     Member member;
+    private MediaType jsonContentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
+            MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("UTF-8"));
 
     @Before
     public void prepareTestMember() throws ParseException {

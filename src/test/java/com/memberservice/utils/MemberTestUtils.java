@@ -23,7 +23,6 @@ public abstract class MemberTestUtils {
     }
 
 
-
     private static Date getDate(int year, int month, int day) {
         Calendar calendar = new GregorianCalendar();
         calendar.set(year, month, day);

@@ -30,17 +30,13 @@ import static org.mockito.BDDMockito.given;
 public class TestMemberService {
 
     private static final Long MEMBER_ID = 42L;
-
-    private Member member;
-
-    @Autowired
-    private MemberService memberService;
-
     @Autowired
     MockMvc mockMvc;
-
     @MockBean
     MemberRepository memberRepositoryMock;
+    private Member member;
+    @Autowired
+    private MemberService memberService;
 
     @Before
     public void prepareTestMember() {
